@@ -4,7 +4,7 @@ import 'package:logging/logging.dart';
 import 'package:ansicolor/ansicolor.dart';
 
 /// [LogInit] configures [Logger] behavior.
-/// Application code should run [setup] once, early in [main].
+/// Application code should call [setup] once, early in [main].
 ///
 /// Libraries should reserve [Level.FINE] for consuming code,
 /// preferring [Level.FINER] or [Level.FINEST] for their debugging messages.
