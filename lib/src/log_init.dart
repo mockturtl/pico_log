@@ -1,7 +1,4 @@
-library log_init;
-
-import 'package:logging/logging.dart';
-import 'package:ansicolor/ansicolor.dart';
+part of pico_log;
 
 /// [LogInit] configures [Logger] behavior.
 /// Application code should call [setup] once, early in [main].
