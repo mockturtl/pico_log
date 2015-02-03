@@ -13,6 +13,7 @@ class LogInit {
       {Level level: Level.ALL, bool colorize: true, bool timestamps: true}) {
     Logger.root.level = level;
     // TODO: prefer ansicolor's color_disabled flag
+    // TODO: check for color support https://code.google.com/p/dart/issues/detail?id=15304
     Logger.root.onRecord.listen(colorize ? _colorize : _onData);
     _fmt = timestamps ? _toMsg : _noTimestamps;
   }
