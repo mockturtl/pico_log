@@ -12,9 +12,12 @@ class LogInit {
   static void setup(
       {Level level: Level.ALL, bool colorize: true, bool timestamps: true}) {
     Logger.root.level = level;
+    // TODO: prefer ansicolor's color_disabled flag
     Logger.root.onRecord.listen(colorize ? _colorize : _onData);
     _fmt = timestamps ? _toMsg : _noTimestamps;
   }
+
+  // TODO: stdio
 
   static void _onData(LogRecord rec) {
     var msg = _fmt(rec);
