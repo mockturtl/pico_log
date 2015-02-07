@@ -1,9 +1,22 @@
-log_init
+pico_log
 ========
 
-Configures `Logger` behavior.
+Configure `Logger` behavior in one line.
 
 usage
 -----
 
-Application code should call `LogInit.setup` once, early in `main`.
+Application code must call `LogInit.setup()` once, early in `main`.
+
+```dart
+import 'package:pico_log/pico_log.dart';
+import 'package:logging/logging.dart';
+
+final _log = new Logger('myapp');
+
+void main() {
+  LogInit.setup();
+  _log.info("hello, world!");
+  // ...
+}
+```
