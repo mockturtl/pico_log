@@ -1,8 +1,8 @@
 name: pico_log
 version: 0.1.0
 description: A tiny library for logger configuration.
-author: mockturtl
-#homepage: https://mockturtl.github.io/pico_log
+author: mockturtl <mockturtl@gmail.com>
+homepage: https://github.com/mockturtl/pico_log
 environment:
   sdk: '>=1.8.0 <2.0.0'
 dependencies:
