@@ -1,22 +1,21 @@
 pico_log
 ========
 
-Configure `Logger` behavior in one line.
+Configure `Logger` behavior, trivially.
+
+[![Pub Version][pub-badge]][pub]
+[![Documentation][dartdocs-badge]][dartdocs]
+
+[pub-badge]: https://img.shields.io/pub/v/pico_log.svg
+[pub]: https://pub.dartlang.org/packages/pico_log
+[dartdocs-badge]: https://img.shields.io/badge/dartdocs-reference-blue.svg
+[dartdocs]: http://www.dartdocs.org/documentation/pico_log/latest
 
 usage
 -----
 
-Application code must call `LogInit.setup()` once, early in `main`.
+See [documentation][usage].
 
-```dart
-import 'package:pico_log/pico_log.dart';
-import 'package:logging/logging.dart';
+[usage]: http://www.dartdocs.org/documentation/pico_log/latest/index.html#pico_log/pico_log
 
-final _log = new Logger('myapp');
-
-void main() {
-  LogInit.setup();
-  _log.info("hello, world!");
-  // ...
-}
-```
+###### license: [MIT](LICENSE)
