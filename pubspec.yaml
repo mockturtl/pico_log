@@ -1,5 +1,5 @@
 name: pico_log
-version: 0.2.0-beta.6+2
+version: 0.2.0
 description: A tiny library for logger configuration.
 author: mockturtl <mockturtl@gmail.com>
 homepage: https://github.com/mockturtl/pico_log
