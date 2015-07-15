@@ -52,3 +52,12 @@ _Stringer noTimestamps = (LogRecord rec) =>
 final _cyan = new AnsiPen()..cyan(bold: true);
 final _yellow = new AnsiPen()..yellow(bold: true);
 final _red = new AnsiPen()..red(bold: true);
+
+void disableColorIfUnsupported() {
+  if (!_hasColorSupport) color_disabled = true;
+}
+
+// Cribbed from pub.
+// https://github.com/dart-lang/pub/blob/6f8ae035883550bfaa690be3aa96f0d2dd8787d7/lib/src/utils.dart#L807
+bool get _hasColorSupport => Platform.operatingSystem != 'windows' &&
+    stdioType(stdout) == StdioType.TERMINAL;
