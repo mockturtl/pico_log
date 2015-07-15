@@ -9,9 +9,10 @@ Release notes are available on [github][notes].
 [pub-semver-readme]: https://pub.dartlang.org/packages/pub_semver
 [notes]: https://github.com/mockturtl/pico_log/releases
 
-HEAD
-----
+0.2.0
+-----
 
+- [feat] detect support for ANSI color output
 - [deps] logging -> `^0.11`
 
 0.1.0
