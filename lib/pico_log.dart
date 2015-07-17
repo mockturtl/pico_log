@@ -27,6 +27,7 @@ library pico_log;
 
 import 'package:args/args.dart';
 import 'package:logging/logging.dart';
+import 'package:pico_log/src/flags.dart';
 import 'package:pico_log/src/impl.dart';
 
 /// Reflect on [T] to provide its name to the [Logger] constructor.
@@ -34,26 +35,22 @@ Logger buildLogger(Type T, {bool useQualifiedName: false}) =>
     new Logger(nameOf(T, !useQualifiedName));
 
 /// Call this early in `main` to configure logging.
-/// If [args] contains a flag for `quiet`, `verbose`, `vv`, or `vvv`, the root
-/// log level will be `Level.NONE`, `Level.FINE`, `Level.FINER`, `Level.FINEST`,
-/// respectively.
+/// If [args] contains a flag for `silent`, `(q|qq|qqq)uiet`, or `(v|vv|vvv)erbose`,
+/// the root log level will be `Level.NONE`, `Level.(WARNING|SEVERE|SHOUT)`,
+/// `Level.(FINE|FINER|FINEST)`, respectively.
 ///
-/// An explicit [level], if provided, will overrides any [args] flags.
+/// An explicit [level], if provided, overrides any [args] flags.
 void setup(
-    {Level level: Level.ALL,
-    ArgResults args,
+    {Level level,
+    ArgResults opts,
     bool colorize: true,
     bool timestamps: true}) {
-  parseLogLevelFlags(args);
-  Logger.root.level = level;
+  if (opts != null) {
+    parseQuietFlags(opts);
+    parseVerboseFlags(opts);
+  }
+  if (level != null) Logger.root.level = level;
   disableColorIfUnsupported();
   Logger.root.onRecord.listen(colorize ? colorized : onData);
   fmt = timestamps ? toMsg : noTimestamps;
-}
-
-void parseLogLevelFlags(ArgResults args) {
-  if (args.wasParsed('quiet')) Logger.root.level = Level.OFF;
-  if (args.wasParsed('verbose')) Logger.root.level = Level.FINE;
-  if (args.wasParsed('vv')) Logger.root.level = Level.FINER;
-  if (args.wasParsed('vvv')) Logger.root.level = Level.FINEST;
 }
