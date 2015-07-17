@@ -9,6 +9,12 @@ Release notes are available on [github][notes].
 [pub-semver-readme]: https://pub.dartlang.org/packages/pub_semver
 [notes]: https://github.com/mockturtl/pico_log/releases
 
+0.2.1
+-----
+
+- [feat] accept parsed command-line options for `quiet`, `verbose`
+- [deps] args @ 0.13
+
 0.2.0
 -----
 
