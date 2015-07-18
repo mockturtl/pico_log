@@ -19,6 +19,9 @@
 ///       }
 ///     }
 ///
+/// Command-line programs should use [buildArgParser] to provide their logging
+/// options.
+///
 /// Libraries should reserve [Level.FINE] for consuming code, preferring
 /// [Level.FINER] or [Level.FINEST] for their critical debugging messages.
 ///
@@ -54,3 +57,27 @@ void setup(
   Logger.root.onRecord.listen(colorize ? colorized : onData);
   fmt = timestamps ? toMsg : noTimestamps;
 }
+
+/// Understands the following flags:
+///
+///     - `--silent (-s)`
+///     - `--quiet (-q)`, `--qquiet`, `--qqquiet`
+///     - `--verbose (-v)`, `--vverbose`, `--vvverbose`
+///
+/// Note [ArgParser] only allows single-letter short options. For example, `-vvv`
+/// is interpreted as `-v`, not `--vvverbose`.
+ArgParser buildArgParser() => new ArgParser()
+  ..addFlag(Levels.quiet,
+      abbr: 'q', help: 'Suppress logger output below WARNING level.')
+  ..addFlag(Levels.qq,
+      negatable: false, help: 'Suppress logger output below SEVERE level.')
+  ..addFlag(Levels.qqq,
+      negatable: false, help: 'Suppress logger output below SHOUT level.')
+  ..addFlag(Levels.silent,
+      abbr: 's', help: 'Suppress all logger output, equivalent to level OFF.')
+  ..addFlag(Levels.verbose,
+      abbr: 'v', help: 'Show logger output at FINE level.')
+  ..addFlag(Levels.vv,
+      negatable: false, help: 'Show logger output at FINER level.')
+  ..addFlag(Levels.vvv,
+      negatable: false, help: 'Show logger output at FINEST level.');

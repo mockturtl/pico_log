@@ -3,40 +3,42 @@ library pico_log.flags;
 import 'package:args/args.dart';
 import 'package:logging/logging.dart';
 
-const _quiet = 'quiet';
-const _qq = 'qquiet';
-const _qqq = 'qqquiet';
-const _silent = 'silent';
-const _verbose = 'verbose';
-const _vv = 'vverbose';
-const _vvv = 'vvverbose';
+class Levels {
+  static const quiet = 'quiet';
+  static const qq = 'qquiet';
+  static const qqq = 'qqquiet';
+  static const silent = 'silent';
+  static const verbose = 'verbose';
+  static const vv = 'vverbose';
+  static const vvv = 'vvverbose';
+}
 
 void parseQuietFlags(ArgResults opts) {
-  if (_understands(opts, _silent)) {
-    if (opts[_silent]) Logger.root.level = Level.OFF;
-    if (_isExplicitlyNegated(
-        opts, _silent)) return _reset(); // bail out of parsing quiet modes
+  if (_understands(opts, Levels.silent)) {
+    if (opts[Levels.silent]) Logger.root.level = Level.OFF;
+    if (_isExplicitlyNegated(opts,
+        Levels.silent)) return _reset(); // bail out of parsing quiet modes
   }
 
-  if (_understands(opts, _quiet)) {
-    if (opts[_quiet]) Logger.root.level = Level.WARNING;
-    if (_isExplicitlyNegated(
-        opts, _quiet)) return _reset(); // bail out of parsing -qq, -qqq modes
+  if (_understands(opts, Levels.quiet)) {
+    if (opts[Levels.quiet]) Logger.root.level = Level.WARNING;
+    if (_isExplicitlyNegated(opts,
+        Levels.quiet)) return _reset(); // bail out of parsing -qq, -qqq modes
   }
 
-  if (_isTrue(opts, _qq)) Logger.root.level = Level.SEVERE;
-  if (_isTrue(opts, _qqq)) Logger.root.level = Level.SHOUT;
+  if (_isTrue(opts, Levels.qq)) Logger.root.level = Level.SEVERE;
+  if (_isTrue(opts, Levels.qqq)) Logger.root.level = Level.SHOUT;
 }
 
 void parseVerboseFlags(ArgResults opts) {
-  if (_understands(opts, _verbose)) {
-    if (opts[_verbose]) Logger.root.level = Level.FINE;
-    if (_isExplicitlyNegated(
-        opts, _verbose)) return _reset(); // bail out of parsing -vv, -vvv modes
+  if (_understands(opts, Levels.verbose)) {
+    if (opts[Levels.verbose]) Logger.root.level = Level.FINE;
+    if (_isExplicitlyNegated(opts,
+        Levels.verbose)) return _reset(); // bail out of parsing -vv, -vvv modes
   }
 
-  if (_isTrue(opts, _vv)) Logger.root.level = Level.FINER;
-  if (_isTrue(opts, _vvv)) Logger.root.level = Level.FINEST;
+  if (_isTrue(opts, Levels.vv)) Logger.root.level = Level.FINER;
+  if (_isTrue(opts, Levels.vvv)) Logger.root.level = Level.FINEST;
 }
 
 /// The parser assigns negated flags (`--no-opt`) the value `false`.
