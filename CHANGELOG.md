@@ -9,6 +9,11 @@ Release notes are available on [github][notes].
 [pub-semver-readme]: https://pub.dartlang.org/packages/pub_semver
 [notes]: https://github.com/mockturtl/pico_log/releases
 
+0.3.1
+-----
+
+- [feat] provide default parser for command-line flags
+
 0.3.0
 -----
 
