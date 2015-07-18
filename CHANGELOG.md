@@ -9,6 +9,12 @@ Release notes are available on [github][notes].
 [pub-semver-readme]: https://pub.dartlang.org/packages/pub_semver
 [notes]: https://github.com/mockturtl/pico_log/releases
 
+0.3.0
+-----
+
+- [fix] handle undefined flags
+- [feat] add flags for `silent`, `(qq|qqq)iet`, `(vv|vvv)erbose`
+
 0.2.1
 -----
 
