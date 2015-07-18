@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
-dartanalyzer --fatal-warnings {bin,lib,example}/*.dart
+dartanalyzer --fatal-warnings {lib,example}/*.dart
 
 pub run test
