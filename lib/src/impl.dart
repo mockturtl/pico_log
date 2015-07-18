@@ -20,6 +20,11 @@ void onData(LogRecord rec) {
   var msg = fmt(rec);
   var level = rec.level.name;
   switch (level) {
+    case 'WARNING':
+    case 'SEVERE':
+    case 'SHOUT':
+      stderr.writeln('$level: $msg');
+      break;
     default:
       stdout.writeln('$level: $msg');
   }
@@ -30,17 +35,17 @@ void colorized(LogRecord rec) {
   var level = rec.level.name;
   switch (level) {
     case 'INFO':
-      stdout.writeln(_cyan('$msg'));
+      stdout.writeln(_cyan('$level: $msg'));
       break;
     case 'WARNING':
-      stderr.writeln(_yellow('$msg'));
+      stderr.writeln(_yellow('$level: $msg'));
       break;
     case 'SEVERE':
     case 'SHOUT':
-      stderr.writeln(_red('$msg'));
+      stderr.writeln(_red('$level: $msg'));
       break;
     default:
-      stdout.writeln('$msg');
+      stdout.writeln('$level: $msg');
   }
 }
 
