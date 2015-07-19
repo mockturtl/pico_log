@@ -1,18 +1,18 @@
 library example;
 
-import 'package:pico_log/pico_log.dart' as pico_log;
+import 'package:pico_log/pico_log.dart';
 
 var f = new Foo();
 var b = new Bar();
 
 main() {
-  pico_log.setup();
+  setup(); // default log level is INFO
   f.demo();
   b.demo();
 }
 
 class Foo {
-  static final log = pico_log.buildLogger(Foo);
+  static final log = buildLogger(Foo);
 
   void demo() {
     log.fine('Hello world!');
@@ -24,7 +24,7 @@ class Foo {
 }
 
 class Bar {
-  static final log = pico_log.buildLogger(Bar, useQualifiedName: true);
+  static final log = buildLogger(Bar, useQualifiedName: true);
 
   void demo() {
     log.fine('Hello world!');
