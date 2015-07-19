@@ -9,6 +9,10 @@ Release notes are available on [github][notes].
 [pub-semver-readme]: https://pub.dartlang.org/packages/pub_semver
 [notes]: https://github.com/mockturtl/pico_log/releases
 
+#### 0.3.1+3
+
+- [docs] tweak example
+
 #### 0.3.1+2
 
 - [docs] fix param name
