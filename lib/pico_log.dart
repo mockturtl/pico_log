@@ -38,11 +38,11 @@ Logger buildLogger(Type T, {bool useQualifiedName: false}) =>
     new Logger(nameOf(T, !useQualifiedName));
 
 /// Call this early in `main` to configure logging.
-/// If [args] contains a flag for `silent`, `(q|qq|qqq)uiet`, or `(v|vv|vvv)erbose`,
+/// If [opts] contains a flag for `silent`, `(q|qq|qqq)uiet`, or `(v|vv|vvv)erbose`,
 /// the root log level will be `Level.NONE`, `Level.(WARNING|SEVERE|SHOUT)`,
 /// `Level.(FINE|FINER|FINEST)`, respectively.
 ///
-/// An explicit [level], if provided, overrides any [args] flags.
+/// An explicit [level], if provided, overrides any [opts] flags.
 void setup(
     {Level level,
     ArgResults opts,
