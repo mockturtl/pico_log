@@ -17,8 +17,9 @@ Configure `Logger` behavior, trivially.
 usage
 -----
 
-See [documentation][usage].
+See [documentation][usage] and [examples][].
 
 [usage]: http://www.dartdocs.org/documentation/pico_log/latest/index.html#pico_log/pico_log
+[examples]: https://github.com/mockturtl/pico_log/tree/master/example
 
 ###### license: [MIT](LICENSE)
